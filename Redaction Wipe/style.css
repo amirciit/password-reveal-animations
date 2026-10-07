@@ -1,0 +1,804 @@
+:root {
+    color-scheme: light;
+    --ink: #191816;
+    --paper: #fff7e8;
+    --paper-deep: #f2e7d3;
+    --coral: #ff6542;
+    --butter: #ffc857;
+    --sage: #a8c686;
+    --muted: #6f675d;
+    --line: #191816;
+    --wipe-duration: 760ms;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-width: 320px;
+    min-height: 100%;
+    background: var(--paper);
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100svh;
+    margin: 0;
+    overflow-x: hidden;
+    background: var(--paper);
+    color: var(--ink);
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.page-layout {
+    display: grid;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-width: 0;
+    grid-template-columns: minmax(22rem, 0.9fr) minmax(32rem, 1.1fr);
+}
+
+.poster-panel {
+    position: relative;
+    display: flex;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(1.4rem, 3vw, 2.4rem);
+    overflow: hidden;
+    border-right: 3px solid var(--ink);
+    background: var(--coral);
+    isolation: isolate;
+}
+
+.poster-panel::before {
+    position: absolute;
+    z-index: -2;
+    width: 24rem;
+    height: 24rem;
+    right: -10rem;
+    bottom: 7%;
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+    background: var(--butter);
+    content: "";
+}
+
+.poster-panel::after {
+    position: absolute;
+    z-index: -1;
+    width: 9rem;
+    height: 34rem;
+    right: 6%;
+    top: 27%;
+    border: 3px solid var(--ink);
+    background: repeating-linear-gradient(
+        -45deg,
+        var(--ink) 0 8px,
+        transparent 8px 18px
+    );
+    content: "";
+    transform: rotate(12deg);
+}
+
+.poster-meta,
+.poster-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.73rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.poster-meta {
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--ink);
+}
+
+.poster-copy {
+    position: relative;
+    z-index: 2;
+    margin: clamp(3rem, 10vh, 6.5rem) 0 auto;
+}
+
+.poster-copy > p {
+    display: inline-block;
+    margin: 0 0 1rem;
+    padding: 0.42rem 0.62rem;
+    border: 2px solid var(--ink);
+    background: var(--paper);
+    box-shadow: 4px 4px 0 var(--ink);
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.poster-copy h1 {
+    max-width: 8ch;
+    margin: 0;
+    font-family: Impact, "Arial Black", Arial, sans-serif;
+    font-size: clamp(4.25rem, 8.6vw, 8.2rem);
+    font-style: normal;
+    font-weight: 900;
+    letter-spacing: -0.055em;
+    line-height: 0.77;
+    text-transform: uppercase;
+}
+
+.poster-copy h1 em {
+    display: inline-block;
+    padding: 0 0.12em 0.07em;
+    background: var(--ink);
+    color: var(--paper);
+    font-style: normal;
+    letter-spacing: -0.035em;
+    transform: rotate(-1.5deg);
+}
+
+.poster-art {
+    position: absolute;
+    z-index: 3;
+    right: clamp(1.3rem, 4vw, 3.2rem);
+    bottom: 13%;
+    width: clamp(7.5rem, 14vw, 11rem);
+    height: clamp(7.5rem, 14vw, 11rem);
+}
+
+.poster-orbit {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+    background: var(--paper);
+    box-shadow: 8px 8px 0 var(--ink);
+    place-items: center;
+}
+
+.poster-orbit::before,
+.poster-orbit::after {
+    position: absolute;
+    background: var(--ink);
+    content: "";
+}
+
+.poster-orbit::before {
+    width: 130%;
+    height: 3px;
+    transform: rotate(22deg);
+}
+
+.poster-orbit::after {
+    width: 3px;
+    height: 130%;
+    transform: rotate(22deg);
+}
+
+.poster-orbit span {
+    position: relative;
+    z-index: 1;
+    padding: 0.2rem;
+    background: var(--paper);
+    font-family: Impact, "Arial Black", sans-serif;
+    font-size: 2.7rem;
+}
+
+.poster-tape {
+    position: absolute;
+    display: flex;
+    width: 160%;
+    top: 44%;
+    left: -31%;
+    justify-content: space-around;
+    gap: 0.5rem;
+    padding: 0.45rem;
+    border-block: 2px solid var(--paper);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: "Courier New", monospace;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transform: rotate(-9deg);
+}
+
+.poster-footer {
+    position: relative;
+    z-index: 4;
+    padding-top: 0.75rem;
+    border-top: 2px solid var(--ink);
+}
+
+.access-panel {
+    display: grid;
+    min-width: 0;
+    padding: clamp(1.25rem, 5vw, 5.5rem);
+    background:
+        linear-gradient(rgba(25, 24, 22, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(25, 24, 22, 0.055) 1px, transparent 1px),
+        var(--paper);
+    background-size: 24px 24px;
+    place-items: center;
+}
+
+.access-card {
+    width: min(100%, 34rem);
+    min-width: 0;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border: 3px solid var(--ink);
+    background: var(--paper);
+    box-shadow: 10px 10px 0 var(--ink);
+}
+
+.section-code {
+    margin: 0 0 0.8rem;
+    color: var(--coral);
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.access-header h2 {
+    margin: 0;
+    font-size: clamp(2.3rem, 6vw, 4.25rem);
+    font-weight: 900;
+    letter-spacing: -0.065em;
+    line-height: 0.95;
+}
+
+.access-header > p:last-child {
+    max-width: 28rem;
+    margin: 0.95rem 0 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+.access-controls {
+    display: grid;
+    min-width: 0;
+    gap: 1.25rem;
+    margin-top: 2.2rem;
+}
+
+.field-group > label,
+.password-heading label {
+    display: block;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.73rem;
+    font-weight: 700;
+    letter-spacing: 0.075em;
+    text-transform: uppercase;
+}
+
+.text-input,
+.password-shell {
+    width: 100%;
+    min-height: 3.55rem;
+    margin-top: 0.55rem;
+    border: 2px solid var(--line);
+    border-radius: 0;
+    background: #fffdfa;
+    box-shadow: 4px 4px 0 var(--paper-deep);
+    transition: box-shadow 150ms ease, transform 150ms ease;
+}
+
+.text-input {
+    padding: 0 1rem;
+    outline: 0;
+    color: var(--ink);
+}
+
+.text-input:focus {
+    box-shadow: 5px 5px 0 var(--butter);
+    transform: translate(-1px, -1px);
+}
+
+.password-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.visibility-state {
+    padding: 0.25rem 0.42rem;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.visibility-state[data-state="revealed"] {
+    background: var(--sage);
+    color: var(--ink);
+}
+
+.visibility-state[data-state="wiping"] {
+    background: var(--butter);
+    color: var(--ink);
+}
+
+.visibility-state[data-state="queued"] {
+    background: var(--coral);
+    color: var(--ink);
+}
+
+.password-shell {
+    position: relative;
+    overflow: hidden;
+}
+
+.password-shell:focus-within {
+    box-shadow: 5px 5px 0 var(--butter);
+    transform: translate(-1px, -1px);
+}
+
+.password-shell.has-error {
+    box-shadow: 5px 5px 0 var(--coral);
+    animation: field-nudge 240ms ease-in-out 2;
+}
+
+.password-shell input {
+    width: 100%;
+    min-height: 3.42rem;
+    padding: 0 1rem;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--ink);
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.045em;
+}
+
+.redaction-band {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    overflow: hidden;
+    border-block: 4px solid var(--ink);
+    background:
+        repeating-linear-gradient(
+            -55deg,
+            transparent 0 9px,
+            rgba(255, 101, 66, 0.9) 9px 12px,
+            transparent 12px 22px
+        ),
+        var(--ink);
+    color: var(--paper);
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    pointer-events: none;
+    text-transform: uppercase;
+    transform: translateX(-105%);
+}
+
+.redaction-band.is-active {
+    animation: redaction-wipe var(--wipe-duration) cubic-bezier(0.77, 0, 0.18, 1) both;
+}
+
+.redaction-band span {
+    padding: 0.2rem 0.35rem;
+    background: var(--ink);
+    white-space: nowrap;
+}
+
+.field-message {
+    min-height: 1rem;
+    margin: 0.48rem 0 0;
+    color: #a52f1a;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    opacity: 0;
+    transform: translateY(-0.2rem);
+    transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.field-message.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.visibility-toggle {
+    display: flex;
+    width: 100%;
+    min-height: 4rem;
+    margin-top: 0.65rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.6rem 0.7rem 0.6rem 0.85rem;
+    border: 2px solid var(--ink);
+    background: var(--butter);
+    color: var(--ink);
+    cursor: pointer;
+    text-align: left;
+    transition: box-shadow 150ms ease, transform 150ms ease;
+}
+
+.visibility-toggle:hover {
+    box-shadow: 4px 4px 0 var(--ink);
+    transform: translate(-2px, -2px);
+}
+
+.visibility-toggle:active {
+    box-shadow: 1px 1px 0 var(--ink);
+    transform: translate(0, 0);
+}
+
+.visibility-toggle:focus-visible {
+    outline: 3px solid var(--coral);
+    outline-offset: 3px;
+}
+
+.toggle-copy {
+    display: grid;
+    gap: 0.15rem;
+}
+
+.toggle-copy small {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.toggle-copy strong {
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.switch-track {
+    position: relative;
+    width: 4.4rem;
+    height: 2.35rem;
+    flex: 0 0 auto;
+    border: 2px solid var(--ink);
+    background: var(--paper);
+}
+
+.switch-thumb {
+    position: absolute;
+    display: grid;
+    width: 1.75rem;
+    height: 1.75rem;
+    top: 0.18rem;
+    left: 0.2rem;
+    border: 2px solid var(--ink);
+    background: var(--coral);
+    font-family: "Courier New", monospace;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1;
+    transition: background-color 250ms ease, transform 350ms cubic-bezier(0.2, 0.9, 0.25, 1.25);
+    place-items: center;
+}
+
+.visibility-toggle[data-visible="true"] .switch-thumb {
+    background: var(--sage);
+    transform: translateX(2rem) rotate(135deg);
+}
+
+.visibility-toggle.is-busy .switch-thumb {
+    animation: thumb-quarter-turn 380ms ease-in-out infinite alternate;
+}
+
+.access-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.keep-signed-in {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 0.78rem;
+}
+
+.keep-signed-in input {
+    width: 1.05rem;
+    height: 1.05rem;
+    margin: 0;
+    accent-color: var(--coral);
+}
+
+.link-button {
+    padding: 0;
+    border: 0;
+    border-bottom: 1px solid currentColor;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.link-button:focus-visible {
+    outline: 3px solid var(--coral);
+    outline-offset: 3px;
+}
+
+.enter-button {
+    display: flex;
+    min-height: 3.7rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 1rem 0 1.15rem;
+    border: 2px solid var(--ink);
+    background: var(--ink);
+    box-shadow: 5px 5px 0 var(--coral);
+    color: var(--paper);
+    cursor: pointer;
+    font-weight: 800;
+    transition: box-shadow 150ms ease, transform 150ms ease;
+}
+
+.enter-button span:last-child {
+    font-size: 1.3rem;
+}
+
+.enter-button:hover {
+    box-shadow: 8px 8px 0 var(--coral);
+    transform: translate(-2px, -2px);
+}
+
+.enter-button:active {
+    box-shadow: 3px 3px 0 var(--coral);
+    transform: translate(1px, 1px);
+}
+
+.enter-button:focus-visible {
+    outline: 3px solid var(--butter);
+    outline-offset: 4px;
+}
+
+.privacy-note {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.7rem 0 0;
+    color: var(--muted);
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.65rem;
+    line-height: 1.45;
+}
+
+.privacy-note > span {
+    width: 0.55rem;
+    height: 0.55rem;
+    flex: 0 0 auto;
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+    background: var(--sage);
+}
+
+.demo-toast {
+    position: fixed;
+    z-index: 20;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    max-width: min(24rem, calc(100vw - 2.5rem));
+    padding: 0.9rem 1rem;
+    border: 2px solid var(--ink);
+    background: var(--butter);
+    box-shadow: 5px 5px 0 var(--ink);
+    color: var(--ink);
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(0.75rem);
+    transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.demo-toast.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    margin: -1px;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+@keyframes redaction-wipe {
+    0% {
+        transform: translateX(-105%);
+    }
+    44%,
+    56% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(105%);
+    }
+}
+
+@keyframes thumb-quarter-turn {
+    to {
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes field-nudge {
+    50% {
+        transform: translateX(0.25rem);
+    }
+}
+
+@media (max-width: 58rem) {
+    .page-layout {
+        grid-template-columns: minmax(17rem, 0.72fr) minmax(28rem, 1fr);
+    }
+
+    .poster-copy h1 {
+        font-size: clamp(3.8rem, 8vw, 6rem);
+    }
+
+    .poster-art {
+        opacity: 0.82;
+    }
+}
+
+@media (max-width: 48rem) {
+    .page-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .poster-panel {
+        min-height: 19rem;
+        padding: 1.1rem 1.25rem;
+        border-right: 0;
+        border-bottom: 3px solid var(--ink);
+    }
+
+    .poster-panel::before {
+        width: 15rem;
+        height: 15rem;
+        right: -6rem;
+        bottom: -5rem;
+    }
+
+    .poster-panel::after {
+        width: 5rem;
+        height: 17rem;
+        right: 15%;
+        top: 20%;
+    }
+
+    .poster-copy {
+        margin: 2rem 0 1.8rem;
+    }
+
+    .poster-copy > p {
+        margin-bottom: 0.75rem;
+    }
+
+    .poster-copy h1 {
+        max-width: none;
+        font-size: clamp(3.15rem, 15vw, 5.25rem);
+        line-height: 0.82;
+    }
+
+    .poster-copy h1 br {
+        display: none;
+    }
+
+    .poster-copy h1 em {
+        margin-inline: 0.1em;
+    }
+
+    .poster-art {
+        width: 6.8rem;
+        height: 6.8rem;
+        right: 1.5rem;
+        bottom: 2.6rem;
+    }
+
+    .poster-footer span:first-child {
+        max-width: 18rem;
+    }
+
+    .access-panel {
+        min-height: calc(100svh - 19rem);
+        padding: 2.4rem 1.25rem 3rem;
+    }
+}
+
+@media (max-width: 28rem) {
+    .poster-panel {
+        min-height: 17rem;
+    }
+
+    .poster-art {
+        display: none;
+    }
+
+    .poster-copy h1 {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+    }
+
+    .poster-footer span:first-child,
+    .poster-meta span:last-child {
+        display: none;
+    }
+
+    .access-panel {
+        padding-inline: 0.85rem;
+    }
+
+    .access-card {
+        padding: 1.25rem;
+        box-shadow: 6px 6px 0 var(--ink);
+    }
+
+    .access-options {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .redaction-band span:nth-child(3) {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

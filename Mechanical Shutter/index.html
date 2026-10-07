@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="An industrial password reveal demo with a mechanical shutter animation.">
+    <title>Password Reveal Animation — Type 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="machine-shell">
+        <header class="machine-header">
+            <div class="unit-identity">
+                <span class="unit-number" aria-hidden="true">03</span>
+                <div>
+                    <p>Security module</p>
+                    <h1>Vault access</h1>
+                </div>
+            </div>
+
+            <div class="system-readout" aria-label="System status">
+                <span class="system-light" aria-hidden="true"></span>
+                <span id="systemState">System ready</span>
+            </div>
+        </header>
+
+        <div class="machine-body">
+            <section class="briefing-panel" aria-labelledby="briefing-title">
+                <p class="panel-code">Checkpoint / M-03</p>
+                <h2 id="briefing-title">Unlock your workspace.</h2>
+                <p class="briefing-copy">
+                    Pull the security lever to cycle the mechanical shutters and expose the sample password.
+                </p>
+
+                <div class="lock-schematic" aria-hidden="true">
+                    <div class="dial-ring">
+                        <span class="dial-core">03</span>
+                    </div>
+                    <span class="dial-marker marker-one"></span>
+                    <span class="dial-marker marker-two"></span>
+                    <span class="dial-marker marker-three"></span>
+                </div>
+
+                <dl class="module-specs">
+                    <div>
+                        <dt>Cycle</dt>
+                        <dd>820 ms</dd>
+                    </div>
+                    <div>
+                        <dt>Blades</dt>
+                        <dd>06</dd>
+                    </div>
+                    <div>
+                        <dt>Mode</dt>
+                        <dd>Local</dd>
+                    </div>
+                </dl>
+            </section>
+
+            <section class="control-panel" aria-label="Demo access controls">
+                <div class="field-group">
+                    <label for="email">Operator ID</label>
+                    <input
+                        id="email"
+                        class="machine-input"
+                        type="email"
+                        value="operator@vault.local"
+                        autocomplete="off"
+                    >
+                </div>
+
+                <div class="field-group password-group">
+                    <div class="field-heading">
+                        <label for="password">Access key</label>
+                        <span id="securityState" class="security-state" data-state="hidden">Secured</span>
+                    </div>
+
+                    <div id="passwordShell" class="password-shell" data-state="hidden" aria-busy="false">
+                        <input
+                            id="password"
+                            type="password"
+                            value="Torque-Lime-03"
+                            autocomplete="off"
+                            spellcheck="false"
+                        >
+
+                        <div id="shutterArray" class="shutter-array" aria-hidden="true">
+                            <span class="shutter-blade" data-index="01"></span>
+                            <span class="shutter-blade" data-index="02"></span>
+                            <span class="shutter-blade" data-index="03"></span>
+                            <span class="shutter-blade" data-index="04"></span>
+                            <span class="shutter-blade" data-index="05"></span>
+                            <span class="shutter-blade" data-index="06"></span>
+                        </div>
+                    </div>
+
+                    <p id="fieldMessage" class="field-message" role="status" aria-live="polite" aria-hidden="true"></p>
+                </div>
+
+                <button
+                    id="togglePassword"
+                    class="lever-control"
+                    type="button"
+                    aria-controls="password"
+                    aria-label="Reveal password"
+                    aria-pressed="false"
+                    data-visible="false"
+                >
+                    <span class="lever-copy">
+                        <small>Security lever</small>
+                        <strong id="leverAction">Unseal password</strong>
+                    </span>
+
+                    <span class="lever-assembly" aria-hidden="true">
+                        <span class="lever-gate">
+                            <span class="lever-arm">
+                                <span class="lever-knob"></span>
+                            </span>
+                        </span>
+                    </span>
+                </button>
+
+                <div class="control-options">
+                    <label class="session-option">
+                        <input type="checkbox">
+                        <span>Maintain session</span>
+                    </label>
+                    <button id="recoveryButton" class="recovery-button" type="button">Recovery protocol</button>
+                </div>
+
+                <button id="demoSubmit" class="authorize-button" type="button">
+                    <span>Authorize session</span>
+                    <span class="authorize-arrow" aria-hidden="true">→</span>
+                </button>
+
+                <p class="local-note">
+                    <span aria-hidden="true"></span>
+                    Offline interaction demo — no credentials are transmitted.
+                </p>
+            </section>
+        </div>
+
+        <footer class="machine-footer" aria-hidden="true">
+            <span>Local security interface</span>
+            <span class="footer-ticks"></span>
+            <span>Build 03.820</span>
+        </footer>
+
+        <span id="liveStatus" class="sr-only" aria-live="polite"></span>
+    </main>
+
+    <div id="demoToast" class="demo-toast" role="status" aria-live="polite" aria-hidden="true"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

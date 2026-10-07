@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A 3D vault tile password reveal animation.">
+  <title>Password Reveal Animation — Type 9</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="stage">
+    <section class="vault-card" aria-labelledby="title">
+      <header>
+        <div class="number">09</div>
+        <div>
+          <p>Vault interface</p>
+          <h1 id="title">Flip the lock.</h1>
+        </div>
+      </header>
+
+      <div class="form-block">
+        <div class="label-row">
+          <label for="password">Master password</label>
+          <span id="stateText">LOCKED</span>
+        </div>
+        <div id="passwordShell" class="password-shell" aria-busy="false">
+          <input id="password" type="password" value="Vault#Flip09" autocomplete="current-password" spellcheck="false">
+          <div id="tileLayer" class="tile-layer" aria-hidden="true"></div>
+          <button id="togglePassword" type="button" aria-controls="password" aria-label="Show password" aria-pressed="false">
+            <span class="button-icon" aria-hidden="true">↻</span>
+            <span id="toggleText">Unlock</span>
+          </button>
+        </div>
+        <p class="note">Each character rotates through a mechanical 3D panel before visibility changes.</p>
+      </div>
+      <span id="liveStatus" class="sr-only" aria-live="polite"></span>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

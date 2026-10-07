@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A neon scan password reveal animation with per-character decode motion.">
+  <title>Password Reveal Animation — Type 8</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="stage">
+    <section class="panel" aria-labelledby="title">
+      <div class="panel-copy">
+        <p class="eyebrow">Interaction study / 08</p>
+        <h1 id="title">Neon<br>Scan Decode</h1>
+        <p class="lead">A luminous scanner crosses the field while each masked symbol briefly decodes into the real password.</p>
+        <div class="specs" aria-label="Motion specifications">
+          <span><b>SCAN</b> 980 ms</span>
+          <span><b>GLYPH</b> 260 ms</span>
+          <span><b>MODE</b> bidirectional</span>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <div class="card-top">
+          <div>
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>Secure terminal</span>
+          </div>
+          <span id="stateText">MASKED</span>
+        </div>
+
+        <label for="password">Access key</label>
+        <div id="passwordShell" class="password-shell" data-visible="false" aria-busy="false">
+          <input id="password" type="password" value="Neon@Cipher8" autocomplete="current-password" spellcheck="false">
+          <div id="glyphLayer" class="glyph-layer" aria-hidden="true"></div>
+          <span id="scanBeam" class="scan-beam" aria-hidden="true"></span>
+          <button id="togglePassword" type="button" aria-controls="password" aria-label="Show password" aria-pressed="false">
+            <span class="eye" aria-hidden="true"></span>
+            <span id="toggleText">Reveal</span>
+          </button>
+        </div>
+
+        <p class="hint">Visual-only demo. The password is never submitted or stored.</p>
+        <span id="liveStatus" class="sr-only" aria-live="polite"></span>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

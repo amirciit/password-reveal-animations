@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A clean password reveal animation where one text line moves smoothly from right to left.">
+    <title>Password Reveal Animation — Type 6</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="page-shell">
+        <section class="demo-card" aria-labelledby="pageTitle">
+            <header class="demo-header">
+                <div class="type-label">
+                    <span>Password reveal</span>
+                    <strong>Type 6</strong>
+                </div>
+
+                <h1 id="pageTitle">A smooth text conveyor.</h1>
+                <p>
+                    One symbol exits through the left edge while the next character enters from the right.
+                </p>
+            </header>
+
+            <div class="field-group">
+                <div class="field-heading">
+                    <label for="password">Password</label>
+                    <span id="visibilityState" class="visibility-state">Hidden</span>
+                </div>
+
+                <div
+                    id="passwordShell"
+                    class="password-shell"
+                    data-state="hidden"
+                    aria-busy="false"
+                >
+                    <input
+                        id="password"
+                        type="password"
+                        value="ABC123"
+                        autocomplete="current-password"
+                        spellcheck="false"
+                    >
+
+                    <div
+                        id="conveyorStage"
+                        class="conveyor-stage"
+                        aria-hidden="true"
+                        hidden
+                    >
+                        <div id="conveyorWindow" class="conveyor-window">
+                            <div id="conveyorTrack" class="conveyor-track"></div>
+                        </div>
+                    </div>
+
+                    <button
+                        id="togglePassword"
+                        class="visibility-toggle"
+                        type="button"
+                        aria-controls="password"
+                        aria-label="Reveal password"
+                        aria-pressed="false"
+                    >
+                        <span id="toggleText">Reveal</span>
+                    </button>
+                </div>
+
+                <p id="fieldMessage" class="field-message" role="status" aria-live="polite"></p>
+                <p class="demo-note">Demo value: ABC123</p>
+            </div>
+
+            <span id="liveStatus" class="sr-only" aria-live="polite"></span>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

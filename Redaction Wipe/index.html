@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A bold editorial password reveal demo using a redaction-wipe animation.">
+    <title>Password Reveal Animation — Type 2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="page-layout">
+        <section class="poster-panel" aria-labelledby="poster-title">
+            <header class="poster-meta">
+                <span>Type / 02</span>
+                <span>Redaction wipe</span>
+            </header>
+
+            <div class="poster-copy">
+                <p>Privacy in motion</p>
+                <h1 id="poster-title">Keep it<br><em>under</em><br>wraps.</h1>
+            </div>
+
+            <div class="poster-art" aria-hidden="true">
+                <div class="poster-orbit">
+                    <span>02</span>
+                </div>
+                <div class="poster-tape">
+                    <span>Private</span>
+                    <span>Private</span>
+                    <span>Private</span>
+                </div>
+            </div>
+
+            <footer class="poster-footer">
+                <span>Password interaction study</span>
+                <span>2026</span>
+            </footer>
+        </section>
+
+        <section class="access-panel" aria-labelledby="access-title">
+            <article class="access-card">
+                <header class="access-header">
+                    <p class="section-code">Secure entry — 02</p>
+                    <h2 id="access-title">Step inside.</h2>
+                    <p>Use the privacy switch to reveal the sample passphrase.</p>
+                </header>
+
+                <div class="access-controls" role="group" aria-label="Demo sign-in controls">
+                    <div class="field-group">
+                        <label for="email">Email address</label>
+                        <input
+                            id="email"
+                            class="text-input"
+                            type="email"
+                            value="guest@studio.local"
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="field-group">
+                        <div class="password-heading">
+                            <label for="password">Passphrase</label>
+                            <span id="visibilityState" class="visibility-state" data-state="hidden">Masked</span>
+                        </div>
+
+                        <div id="passwordShell" class="password-shell" data-state="hidden" aria-busy="false">
+                            <input
+                                id="password"
+                                type="password"
+                                value="Paper&amp;Ink#26"
+                                autocomplete="off"
+                                spellcheck="false"
+                            >
+
+                            <div id="redactionBand" class="redaction-band" aria-hidden="true">
+                                <span>Private</span>
+                                <span>Private</span>
+                                <span>Private</span>
+                            </div>
+                        </div>
+
+                        <p id="fieldMessage" class="field-message" role="status" aria-live="polite" aria-hidden="true"></p>
+
+                        <button
+                            id="togglePassword"
+                            class="visibility-toggle"
+                            type="button"
+                            aria-controls="password"
+                            aria-label="Show password"
+                            aria-pressed="false"
+                        >
+                            <span class="toggle-copy">
+                                <small>Password view</small>
+                                <strong id="toggleAction">Reveal</strong>
+                            </span>
+                            <span class="switch-track" aria-hidden="true">
+                                <span class="switch-thumb">+</span>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="access-options">
+                        <label class="keep-signed-in">
+                            <input type="checkbox">
+                            <span>Keep me signed in</span>
+                        </label>
+                        <button id="accessHelp" class="link-button" type="button">Need access?</button>
+                    </div>
+
+                    <button id="demoSubmit" class="enter-button" type="button">
+                        <span>Enter workspace</span>
+                        <span aria-hidden="true">↗</span>
+                    </button>
+                </div>
+
+                <p class="privacy-note">
+                    <span aria-hidden="true"></span>
+                    Visual demo only. Nothing is transmitted or stored.
+                </p>
+
+                <span id="liveStatus" class="sr-only" aria-live="polite"></span>
+            </article>
+        </section>
+    </main>
+
+    <div id="demoToast" class="demo-toast" role="status" aria-live="polite" aria-hidden="true"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

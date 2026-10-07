@@ -1,0 +1,296 @@
+:root {
+    color-scheme: light;
+    --canvas: #f5f6f8;
+    --surface: #ffffff;
+    --ink: #17191d;
+    --muted: #6c7078;
+    --line: #d8dbe1;
+    --accent: #2563eb;
+    --accent-dark: #1d4ed8;
+    --danger: #b4233f;
+    font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    background: var(--canvas);
+    color: var(--ink);
+}
+
+button,
+input {
+    font: inherit;
+}
+
+.page-shell {
+    display: grid;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 1.25rem;
+    place-items: center;
+}
+
+.demo-card {
+    width: min(100%, 34rem);
+    padding: clamp(1.5rem, 5vw, 2.5rem);
+    border: 1px solid var(--line);
+    border-radius: 1.35rem;
+    background: var(--surface);
+    box-shadow: 0 1rem 3rem rgba(20, 24, 32, 0.08);
+}
+
+.type-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--muted);
+    font-size: 0.7rem;
+    font-weight: 750;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.type-label strong {
+    color: var(--accent);
+}
+
+.demo-header h1 {
+    margin: 1.2rem 0 0;
+    font-size: clamp(2rem, 8vw, 3.25rem);
+    letter-spacing: -0.055em;
+    line-height: 1;
+}
+
+.demo-header > p {
+    max-width: 27rem;
+    margin: 1rem 0 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+.field-group {
+    margin-top: 2.25rem;
+}
+
+.field-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.55rem;
+}
+
+.field-heading label {
+    font-size: 0.78rem;
+    font-weight: 750;
+}
+
+.visibility-state {
+    color: var(--muted);
+    font-size: 0.7rem;
+    font-weight: 650;
+}
+
+.password-shell {
+    position: relative;
+    min-height: 4rem;
+    overflow: hidden;
+    border: 1px solid #aeb3bd;
+    border-radius: 0.8rem;
+    background: var(--surface);
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.password-shell:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.11);
+}
+
+.password-shell.has-error {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 4px rgba(180, 35, 63, 0.09);
+}
+
+.password-shell input {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: 3.9rem;
+    padding: 0 6rem 0 1.1rem;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--ink);
+    caret-color: var(--accent);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    font-size: 1.05rem;
+    font-variant-ligatures: none;
+    letter-spacing: 0.38em;
+}
+
+.password-shell.is-running input {
+    color: transparent;
+    caret-color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.conveyor-stage {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    top: 0;
+    right: 6rem;
+    bottom: 0;
+    left: 1.1rem;
+    align-items: center;
+    overflow: hidden;
+    color: var(--ink);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    font-size: 1.05rem;
+    font-variant-ligatures: none;
+    letter-spacing: 0.38em;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+}
+
+.conveyor-stage[hidden] {
+    display: none;
+}
+
+.conveyor-window {
+    max-width: 100%;
+    overflow: hidden;
+    flex: 0 0 auto;
+}
+
+.conveyor-track {
+    --advance: 1em;
+    display: flex;
+    width: max-content;
+    align-items: center;
+    direction: ltr;
+    transform: translateX(0);
+    unicode-bidi: isolate;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+.conveyor-glyph {
+    display: block;
+    width: var(--advance);
+    flex: 0 0 var(--advance);
+    overflow: visible;
+    text-align: left;
+    white-space: pre;
+}
+
+.conveyor-probe {
+    position: absolute;
+    width: max-content;
+    visibility: hidden;
+    white-space: pre;
+}
+
+.visibility-toggle {
+    position: absolute;
+    z-index: 3;
+    min-width: 4.75rem;
+    min-height: 3rem;
+    top: 0.45rem;
+    right: 0.45rem;
+    padding: 0 0.85rem;
+    border: 0;
+    border-radius: 0.55rem;
+    background: var(--ink);
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 0.72rem;
+    font-weight: 750;
+    transition: background-color 160ms ease;
+}
+
+.visibility-toggle:hover {
+    background: #2a2d33;
+}
+
+.visibility-toggle:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.28);
+    outline-offset: 2px;
+}
+
+.field-message {
+    min-height: 1rem;
+    margin: 0.45rem 0 0;
+    color: var(--danger);
+    font-size: 0.72rem;
+}
+
+.demo-note {
+    margin: 0.4rem 0 0;
+    color: var(--muted);
+    font-size: 0.68rem;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    margin: -1px;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+@media (max-width: 25rem) {
+    .page-shell {
+        padding: 0.75rem;
+    }
+
+    .demo-card {
+        padding: 1.35rem;
+        border-radius: 1rem;
+    }
+
+    .password-shell input,
+    .conveyor-stage {
+        font-size: 1rem;
+    }
+
+    .password-shell input {
+        padding-right: 5.35rem;
+    }
+
+    .conveyor-stage {
+        right: 5.35rem;
+    }
+
+    .visibility-toggle {
+        min-width: 4.15rem;
+        padding-inline: 0.65rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}

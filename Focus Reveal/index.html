@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A smooth password reveal demo with a visible focus-match sweep.">
+    <title>Password Reveal Animation — Type 4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page-frame">
+        <header class="top-bar">
+            <a class="wordmark" href="#demo" aria-label="Softly password demo">
+                softly<span>.</span>
+            </a>
+
+            <div class="study-label">
+                <span>Interaction study</span>
+                <strong>04</strong>
+            </div>
+        </header>
+
+        <main class="hero-layout">
+            <section class="intro-panel" aria-labelledby="page-title">
+                <p class="eyebrow">Focus match / Type 04</p>
+                <h1 id="page-title">Clarity,<br>on demand.</h1>
+                <p class="intro-copy">
+                    A luminous focus sweep carries the password through a soft blur and returns it cleanly into view.
+                </p>
+
+                <dl class="motion-specs" aria-label="Animation specifications">
+                    <div>
+                        <dt>Out</dt>
+                        <dd>300 ms</dd>
+                    </div>
+                    <div>
+                        <dt>In</dt>
+                        <dd>500 ms</dd>
+                    </div>
+                    <div>
+                        <dt>Travel</dt>
+                        <dd>12 px</dd>
+                    </div>
+                </dl>
+            </section>
+
+            <section id="demo" class="signin-card" aria-labelledby="signin-title">
+                <header class="card-header">
+                    <div class="profile-mark" aria-hidden="true">
+                        <span>S</span>
+                    </div>
+                    <div>
+                        <p>Personal space</p>
+                        <h2 id="signin-title">Welcome back</h2>
+                    </div>
+                </header>
+
+                <div class="signin-controls" role="group" aria-label="Demo sign-in controls">
+                    <div class="field-group">
+                        <label for="email">Email</label>
+                        <div class="input-shell">
+                            <input
+                                id="email"
+                                type="email"
+                                value="hello@softly.local"
+                                autocomplete="off"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="field-group password-group">
+                        <div class="field-heading">
+                            <label for="password">Password</label>
+                            <span id="visibilityState" class="visibility-state" data-state="hidden">Hidden</span>
+                        </div>
+
+                        <div id="passwordShell" class="input-shell password-shell" data-state="hidden" aria-busy="false">
+                            <span id="focusBloom" class="focus-bloom" aria-hidden="true"></span>
+
+                            <input
+                                id="password"
+                                type="password"
+                                value="Softly@04"
+                                autocomplete="current-password"
+                                spellcheck="false"
+                            >
+
+                            <button
+                                id="togglePassword"
+                                class="visibility-toggle"
+                                type="button"
+                                aria-controls="password"
+                                aria-label="Show password"
+                                data-visible="false"
+                            >
+                                <span class="toggle-symbol" aria-hidden="true">
+                                    <span></span>
+                                </span>
+                                <span id="toggleText">Show</span>
+                            </button>
+                        </div>
+
+                        <p id="fieldMessage" class="field-message" role="status" aria-live="polite" aria-hidden="true"></p>
+                    </div>
+
+                    <div class="signin-options">
+                        <label class="remember-option">
+                            <input type="checkbox">
+                            <span>Remember me</span>
+                        </label>
+                        <button id="forgotButton" class="text-button" type="button">Forgot password?</button>
+                    </div>
+
+                    <button id="demoSubmit" class="continue-button" type="button">
+                        Continue
+                    </button>
+                </div>
+
+                <p class="demo-note">
+                    This is a visual demo. Nothing is submitted or stored.
+                </p>
+
+                <span id="liveStatus" class="sr-only" aria-live="polite"></span>
+            </section>
+        </main>
+
+        <footer class="page-footer">
+            <span>Visible motion · Clean clarity</span>
+            <span>04 / Focus match</span>
+        </footer>
+    </div>
+
+    <div id="demoToast" class="demo-toast" role="status" aria-live="polite" aria-hidden="true"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

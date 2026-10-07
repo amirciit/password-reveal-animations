@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A right-to-left, character-by-character password reveal animation demo.">
+    <title>Password Reveal Animation — Type 5</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="top-bar">
+            <a class="brand" href="#demo" aria-label="Cascade password demo">
+                <span class="brand-mark" aria-hidden="true">←</span>
+                <span>cascade</span>
+            </a>
+
+            <div class="study-number">
+                <span>Interaction study</span>
+                <strong>05</strong>
+            </div>
+        </header>
+
+        <main class="hero-layout">
+            <section class="intro-panel" aria-labelledby="page-title">
+                <p class="eyebrow">Character sequence / Type 05</p>
+                <h1 id="page-title">One by<br><em>one.</em></h1>
+                <p class="intro-copy">
+                    Every character changes independently. The cascade starts at the right edge and travels left.
+                </p>
+
+                <div class="direction-demo" aria-hidden="true">
+                    <div class="direction-heading">
+                        <span>Finish</span>
+                        <strong>Right-to-left sequence</strong>
+                        <span>Start</span>
+                    </div>
+                    <div class="direction-cells">
+                        <span>01</span>
+                        <span>02</span>
+                        <span>03</span>
+                        <span>04</span>
+                        <span>05</span>
+                        <span>06</span>
+                        <span>07</span>
+                        <span>08</span>
+                        <span class="is-first">09</span>
+                    </div>
+                    <span class="direction-arrow">←</span>
+                </div>
+
+                <dl class="motion-specs" aria-label="Animation specifications">
+                    <div>
+                        <dt>Character</dt>
+                        <dd>340 ms</dd>
+                    </div>
+                    <div>
+                        <dt>Stagger</dt>
+                        <dd>72 ms</dd>
+                    </div>
+                    <div>
+                        <dt>Direction</dt>
+                        <dd>Left ← Right</dd>
+                    </div>
+                </dl>
+            </section>
+
+            <section id="demo" class="access-card" aria-labelledby="card-title">
+                <header class="card-header">
+                    <div>
+                        <p>Secure access</p>
+                        <h2 id="card-title">Enter your workspace</h2>
+                    </div>
+                    <span class="card-chip">RTL</span>
+                </header>
+
+                <div class="access-controls" role="group" aria-label="Demo sign-in controls">
+                    <div class="field-group">
+                        <label for="email">Email address</label>
+                        <div class="input-shell">
+                            <input
+                                id="email"
+                                type="email"
+                                value="hello@cascade.local"
+                                autocomplete="off"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="field-group password-group">
+                        <div class="field-heading">
+                            <label for="password">Password</label>
+                            <span id="visibilityState" class="visibility-state" data-state="hidden">Hidden</span>
+                        </div>
+
+                        <div
+                            id="passwordShell"
+                            class="input-shell password-shell"
+                            data-state="hidden"
+                            aria-busy="false"
+                        >
+                            <input
+                                id="password"
+                                type="password"
+                                value="Cascade@5"
+                                autocomplete="current-password"
+                                spellcheck="false"
+                            >
+
+                            <div id="characterStage" class="character-stage" aria-hidden="true" hidden>
+                                <div id="characterTrack" class="character-track"></div>
+                                <span id="sequenceBeam" class="sequence-beam"></span>
+                            </div>
+
+                            <button
+                                id="togglePassword"
+                                class="visibility-toggle"
+                                type="button"
+                                aria-controls="password"
+                                aria-label="Reveal password"
+                                data-visible="false"
+                            >
+                                <span class="sequence-icon" aria-hidden="true">
+                                    <i></i><i></i><i></i>
+                                </span>
+                                <span id="toggleText">Reveal</span>
+                            </button>
+                        </div>
+
+                        <div class="sequence-meta" aria-hidden="true">
+                            <span id="characterCount">9 characters</span>
+                            <span>Starts on the right</span>
+                        </div>
+
+                        <p id="fieldMessage" class="field-message" role="status" aria-live="polite" aria-hidden="true"></p>
+                    </div>
+
+                    <div class="access-options">
+                        <label class="remember-option">
+                            <input type="checkbox">
+                            <span>Keep me signed in</span>
+                        </label>
+                        <button id="forgotButton" class="text-button" type="button">Forgot password?</button>
+                    </div>
+
+                    <button id="demoSubmit" class="continue-button" type="button">
+                        Continue securely
+                        <span aria-hidden="true">↗</span>
+                    </button>
+                </div>
+
+                <p class="demo-note">Visual demo only. Nothing is submitted or stored.</p>
+                <span id="liveStatus" class="sr-only" aria-live="polite"></span>
+            </section>
+        </main>
+
+        <footer class="page-footer">
+            <span>Per-character motion</span>
+            <span>05 / RTL cascade</span>
+        </footer>
+    </div>
+
+    <div id="demoToast" class="demo-toast" role="status" aria-live="polite" aria-hidden="true"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
