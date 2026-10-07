@@ -2,11 +2,15 @@
 
 A collection of **10 creative password reveal animations** built with vanilla HTML, CSS, and JavaScript.
 
-Each animation provides a different visual way to reveal and hide password characters without requiring any framework, library, or build tool.
+Each animation provides a different visual way to reveal and hide password characters without requiring any framework, library, dependency, or build tool.
 
-## Live Animations
+## Live Demo
 
-The collection currently includes:
+Explore the full collection:
+
+**https://amirciit.github.io/password-reveal-animations/**
+
+## Animations
 
 1. **Scramble Reveal** — characters rapidly scramble before resolving into the real password.
 2. **Redaction Wipe** — a smooth redaction-style wipe reveals and hides the password.
@@ -31,24 +35,24 @@ The collection currently includes:
 - Easy to customize
 - Suitable for login and authentication interfaces
 - `prefers-reduced-motion` support where applicable
+- GitHub Pages-ready gallery
 
 ## Project Structure
 
 ```text
-Password Reveal Animation/
+password-reveal-animations/
 │
+├── index.html
+├── style.css
 ├── README.md
 │
 ├── Scramble Reveal/
 │   ├── index.html
 │   ├── style.css
-│   └── script.js
+│   ├── script.js
+│   └── README.md
 │
 ├── Redaction Wipe/
-│   ├── index.html
-│   ├── style.css
-│   └── script.js
-│
 ├── Mechanical Shutter/
 ├── Focus Reveal/
 ├── Character Cascade/
@@ -66,7 +70,7 @@ Each animation is independent and can be used separately.
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/password-reveal-animations.git
+git clone https://github.com/amirciit/password-reveal-animations.git
 ```
 
 Open the project:
@@ -75,28 +79,9 @@ Open the project:
 cd password-reveal-animations
 ```
 
-Choose any animation folder and open its `index.html` file in your browser.
+Open the root `index.html` to browse the gallery, or choose any animation folder and open its `index.html` directly.
 
 No installation or package manager is required.
-
-## Example
-
-For example:
-
-```text
-Neon Scan Decode/
-├── index.html
-├── style.css
-└── script.js
-```
-
-Open:
-
-```text
-Neon Scan Decode/index.html
-```
-
-in your browser to run the demo.
 
 ## Customization
 
@@ -124,28 +109,19 @@ Reduced-motion behavior should be respected for users who enable:
 @media (prefers-reduced-motion: reduce)
 ```
 
-Password visibility controls should also remain keyboard accessible and include suitable accessibility labels when used in production applications.
+Password visibility controls should remain keyboard accessible and include suitable accessibility labels when used in production applications.
 
 ## Security Note
 
-These animations are **visual UI effects only**.
+These animations are **visual UI effects only**. They do not provide encryption or additional password security.
 
-They do not provide encryption or additional password security.
-
-Applications using these effects should continue to follow normal security practices, including:
-
-- HTTPS
-- secure authentication
-- server-side password hashing
-- secure password storage
-- appropriate autocomplete attributes
-- protection against common web vulnerabilities
+Applications using these effects should continue to follow normal security practices, including HTTPS, server-side password hashing, secure password storage, appropriate autocomplete attributes, and protection against common web vulnerabilities.
 
 Never store plain-text passwords.
 
 ## Browser Support
 
-The animations are designed for modern browsers, including:
+Designed for modern browsers, including:
 
 - Google Chrome
 - Microsoft Edge
@@ -156,38 +132,31 @@ Some advanced visual effects may look slightly different between browsers.
 
 ## Contributing
 
-Contributions are welcome.
+Contributions are welcome. You can contribute new reveal effects, accessibility improvements, compatibility fixes, performance improvements, or documentation updates.
 
-You can contribute by:
-
-- creating new password reveal effects
-- improving existing animations
-- improving accessibility
-- fixing browser compatibility issues
-- optimizing performance
-- improving documentation
-
-To contribute:
+Create a feature branch:
 
 ```bash
 git checkout -b feature/new-animation
 ```
 
-Make your changes and commit them:
+Then commit your changes:
 
 ```bash
 git add .
 git commit -m "Add new password reveal animation"
 ```
 
-Then push your branch and create a pull request.
+Push the branch and open a pull request.
 
 ## License
 
-This project is intended to be released under the **MIT License**, allowing reuse, modification, and distribution with attribution.
+This project is intended to be released under the **MIT License**.
 
 ## Author
 
 **Muhammad Amir Tariq**
 
-If you find the project useful, consider giving the repository a ⭐ on GitHub.
+GitHub: **https://github.com/amirciit**
+
+If you find the project useful, consider giving the repository a ⭐.
